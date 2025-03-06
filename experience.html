@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            background-image: url('https://scontent.fbkk22-1.fna.fbcdn.net/v/t39.30808-6/482197823_9709772789084792_6115278382100188372_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=bd9a62&_nc_ohc=mbM89BzAEhMQ7kNvgGwlVgj&_nc_oc=AdhLrSaQ6ikI5PSgL3jsisN0wNNGENzSxJ_6UNHXGI2t_17Auv70WFDYacwUIRmc1BzCJHOKUIKo7fpAeAYvJbP_&_nc_zt=23&_nc_ht=scontent.fbkk22-1.fna&_nc_gid=AcuqQx3lB6LMlYxEMgmO0w3&oh=00_AYBk-h98GxlwnvsFDLUySTq3HxKu8CBO6ZIziPNqQeK7Lw&oe=67CE8D40'); /* Updated background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin-left: 2rem;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin-right: 2rem;
+            display: flex;
+            justify-content: flex-start; /* Align items to the left */
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 1rem;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .container {
+            width: 80%;
+            margin: 2rem auto;
+        }
+        .experience {
+            display: flex;
+            flex-direction: row; /* Revert to row layout */
+            align-items: flex-start;
+            margin-top: 2rem;
+        }
+        .experience h2 {
+            width: 20%; /* Adjusted width */
+            margin-left: 2rem;
+            font-size: 1.5rem; /* Smaller font size */
+        }
+        .carousel {
+            width: 100%; /* Full width */
+            max-width: 1200px; /* Max width to fit within layout */
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-item {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .carousel-item .experience-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px; /* Rounded corners */
+            margin: 1rem;
+            padding: 1rem;
+            width: 100%; /* Full width */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow */
+            font-size: 0.8rem; /* Smaller font size */
+        }
+        .experience-item h3 {
+            margin: 0;
+            font-size: 1rem; /* Smaller heading size */
+        }
+        .experience-item p, .experience-item ul {
+            word-wrap: break-word; /* Ensure text wraps within the display area */
+        }
+        .experience-item p {
+            margin: 0.5rem 0;
+        }
+        .experience-item ul {
+            padding-left: 1.2rem;
+        }
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        .carousel-indicators button {
+            border: none;
+            background-color: #ddd;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        .carousel-indicators button.active {
+            background-color: #333;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const carouselInner = document.querySelector('.carousel-inner');
+            const indicators = document.querySelectorAll('.carousel-indicators button');
+            let currentIndex = 0;
+
+            function updateCarousel() {
+                const width = carouselInner.clientWidth;
+                carouselInner.style.transform = `translateX(-${currentIndex * width}px)`;
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentIndex);
+                });
+            }
+
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+
+            updateCarousel();
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1><a href="home.html" style="color: inherit; text-decoration: none;">My Portfolio</a></h1>
+        <nav>
+            <ul>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="hobby.html">Hobby</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <section id="experience" class="experience">
+            <h2>Experience</h2>
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item">
+                        <div class="experience-item">
+                            <h3>Synergy Commodities Trade Co.,Ltd</h3>
+                            <p><strong>Head of Business Development and Franchise Management</strong></p>
+                            <p><em>October 2023 - Present</em></p>
+                            <p>Data Analyst Responsibilities: (Managed a team of 3 Data Analysts.)</p>
+                            <ul>
+                                <li>Analyzed internal company data to set sales targets</li> 
+                                <li>and evaluate the performance of the sales department.</li>
+                                <li>Utilized Excel and Power BI for data analysis and reporting, with SQL queries</li> 
+                                <li>from HeidiSQL as the primary database tool.</li>
+                                <li>Conducted website performance analysis using Google Analytics 4 and Google Tag Manager,</li>
+                                <li>implementing tracking and generating performance reports.</li>
+                            </ul>
+                            <p><strong>Accomplishments:</strong></p>
+                            <ul>
+                                <li>Developed risk assessment reports comparing trade credit limits with customer collateral.</li>
+                                <li>Created performance reports for the sales team managing gold bullion and jewelry customers,</li> 
+                                <li>segmenting clients and optimizing customer care based on employee call logs.</li>
+                                <li>Managed company asset allocation reports, including cash, gold bullion, and jewelry.</li>
+                                <li>Developed Excel VBA tools to track customer collateral adequacy and follow up on due</li> 
+                                <li>payments for upcoming transactions.</li>
+                                <li>Generated reports analyzing customer gold trading statistics, with similarities to trader metrics.</li>
+                            </ul>
+                            <p>Business Development Responsibilities: (Managed a team of 4 in Business Development.)</p>
+                            <ul>
+                                <li>Managed franchise customers who account for 70% of total company sales,</li> 
+                                <li>overseeing their franchise operations and developing</li> 
+                                <li>a comprehensive franchise system for the company.</li>
+                                <li>Conducted research, designed, and implemented franchise systems,</li> 
+                                <li>while developing strategies for acquiring new customers.</li>
+                            </ul>
+                            <p><strong>Accomplishments:</strong></p>
+                            <ul>
+                                <li>Developed a franchise management system using an IB Broker model for gold trading.</li>
+                                <li>Created a training program for franchisee employees</li> 
+                                <li>to help them launch their businesses successfully.</li>
+                                <li>Hosted online seminars to educate target audiences on</li> 
+                                <li>business development tools like LINE OA, TikTok, and gold trading systems.</li>
+                            </ul>
+                            <p>Operation Support Responsibilities: (Managed a team of 4 in Operation Support.)</p>
+                            <ul>
+                                <li>Managed a team supporting the sales department with documentation, fund reservations,</li> 
+                                <li>and internal coordination to address customer inquiries.</li>
+                                <li>Expanded operational support to cover nighttime hours, in addition to daytime.</li>
+                                <li>Streamlined learning processes for faster team onboarding.</li>
+                            </ul>
+                            <p><strong>Accomplishments:</strong></p>
+                            <ul>
+                                <li>Monitored company risks, including debt collection and tracking</li> 
+                                <li>client losses through Call Margin reports for gold trading.</li>
+                                <li>Established customer account opening policies and contributed</li> 
+                                <li>to annual policy planning for client collateral in gold trading.</li>
+                                <li>Developed an efficient SOP to enhance sales support operations.</li>
+                                <li>Created document templates using Google Sheets, integrating customer data</li> 
+                                <li>for transactions such as buy/sell agreements and deposit/withdrawal forms.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="experience-item">
+                            <h3>WIN2GETHER CO., LTD.</h3>
+                            <p><strong>Business Consultant and Marketing</strong></p>
+                            <p><em>November 2023 - Present</em></p>
+                            <p>Planned the expansion of various business aspects, including shaping the company’s</p> 
+                            <p>image by focusing on vision, attitude, and organizational goals.</p> 
+                            <p>This ensures that the brand is communicated effectively</p> 
+                            <p>and accurately in the market. Responsible for planning marketing content</p> 
+                            <p>and advertising strategies to drive sales growth.</p>
+                            <p><strong>Accomplishments:</strong></p>
+                            <ul>
+                                <li>Created a business unit to oversee the following products:</li>
+                                <li>Financial Products: Includes mortgage transactions,</li> 
+                                <li>pawn transactions, loan services, and other financial activities.</li>
+                                <li>Investment Knowledge Products: Provides education</li> 
+                                <li>on investments such as mortgage investments and launching Airbnb businesses.</li>
+                                <li>Real Estate Products: Encompasses rental condominiums, commercial buildings,</li> 
+                                <li>single-family homes, and housing estates.</li>
+                                <li>Each product line operates as its own unit for more focused management and growth.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="experience-item">
+                            <h3>NGERN ME THONG PAI CO., LTD.</h3>
+                            <p><strong>Marketing & Business Strategist</strong></p>
+                            <p><em>April 2019 - October 2023</em></p>
+                            <p>Co-founded and developed strategic plans for the company,</p> 
+                            <p>designed sales processes through Omni Channels.</p> 
+                            <p>Planned and executed marketing strategies and campaigns to boost sales,</p> 
+                            <p>positioning the product to stand out based on market trends.</p>
+                            <p><strong>Accomplishments:</strong></p>
+                            <ul>
+                                <li>Successfully rebranded the product and differentiated its selling points as planned.</li>
+                                <li>Developed Omni Channel sales strategies in collaboration with B2B partners.</li>
+                                <li>Created marketing content to build brand awareness on platforms like Facebook, Instagram, and TikTok.</li>
+                                <li>Expert in utilizing LINE OA (Official Account) tools for marketing purposes,</li> 
+                                <li>driving sales, and managing customer relationships.</li>
+                                <li>Expert in using WordPress websites, capable of analyzing data with Google Analytics 4 (certified),</li> 
+                                <li>and proficient in setting up tracking with Google Tag Manager. Possesses knowledge of various SEO tools and practices.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="experience-item">
+                            <h3>Synergy Commodities Trade Co.,Ltd</h3>
+                            <p><strong>Data Analysis Marketing Officer</strong></p>
+                            <p><em>June 2018 - March 2019</em></p>
+                            <p>Developed sales strategies to acquire new customers</p> 
+                            <p>and introduced innovative approaches for customer relationship management.</p> 
+                            <p>Designed and implemented a stock management system for trading gold bullion and</p> 
+                            <p>jewelry. Created portfolio management data to assist the executive team in strategic</p> 
+                            <p>planning for asset management, including cash, gold bullion, and gold jewelry.</p>
+                            <p><strong>Accomplishments:</strong></p>
+                            <ul>
+                                <li>The executive team can utilize the data to allocate the company's assets effectively</li> 
+                                <li> manage various risks associated with them.</li>
+                                <li>Created a stock management system using Excel VBA for internal use to manage the company's stock data.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-indicators">
+                    <button class="active"></button>
+                    <button></button>
+                    <button></button>
+                    <button></button>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2023 My Portfolio</p>
+    </footer>
+</body>
+</html>

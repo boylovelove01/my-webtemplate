@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Advice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            background-image: url('https://scontent.fbkk22-6.fna.fbcdn.net/v/t39.30808-6/482006944_9709813315747406_4309873100532526338_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=bd9a62&_nc_ohc=r7ZA99GZhQgQ7kNvgH6Vkgg&_nc_oc=AdhJcyvWor4Xj66bd0I3PgqS8N0LP6oCplzsTkBwuQPl3qIyLMoXXdNPVx14-CO9MUSWBKVxDMynp6vAoSugvmty&_nc_zt=23&_nc_ht=scontent.fbkk22-6.fna&_nc_gid=A415rr4H7ie3KOkl7SEYLEA&oh=00_AYAM9G-J__Q7pXRvVEW3ZYA9cT-Zk5JQiCJpsIh5O7mgvA&oe=67CEC1B2'); /* Updated background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin-left: 2rem;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin-right: 2rem;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 1rem;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .container {
+            width: 80%;
+            margin: 2rem auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .search-section, .advice-section {
+            flex: 1;
+            margin: 1rem;
+            max-width: 45%;
+            background-color: #fff; /* Solid white background */
+            padding: 1rem;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow */
+        }
+        .search-section input {
+            width: calc(100% - 2rem); /* Adjust width to fit within the container */
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .search-section button {
+            padding: 0.5rem 1rem;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .advice-item, .stock-info {
+            background-color: #fff; /* Solid white background */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 1rem 0;
+            padding: 1rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .advice-item h3 {
+            margin-top: 0;
+        }
+        .advice-item p {
+            margin-bottom: 0;
+        }
+        .stock-info h3 {
+            margin-top: 0;
+        }
+        .stock-info p {
+            margin-bottom: 0;
+        }
+        .stock-info img {
+            width: 100%;
+            height: auto;
+        }
+        .tradingview-widget {
+            width: 100%;
+            height: 500px; /* Adjust height as needed */
+            margin: 1rem 0;
+        }
+        .tradingview-news-widget {
+            flex: 1;
+            margin: 1rem;
+            max-width: 45%;
+            background-color: #fff; /* Solid white background */
+            padding: 1rem;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow */
+            display: flex;
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+    <script>
+        async function searchStock() {
+            const query = document.getElementById('searchInput').value;
+            const stockInfo = document.getElementById('stockInfo');
+            try {
+                if (!navigator.onLine) {
+                    throw new Error('No internet connection');
+                }
+                const response = await fetch(`https://query1.finance.yahoo.com/v7/finance/quote?symbols=${query}`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                if (data.quoteResponse.result.length === 0) {
+                    throw new Error('No stock data found');
+                }
+                const stock = data.quoteResponse.result[0];
+
+                stockInfo.innerHTML = `
+                    <div class="stock-info">
+                        <h3>${stock.longName} (${stock.symbol})</h3>
+                        <p>Price: $${stock.regularMarketPrice}</p>
+                        <p>Change: ${stock.regularMarketChange} (${stock.regularMarketChangePercent}%)</p>
+                        <img src="https://finviz.com/chart.ashx?t=${stock.symbol}" alt="Stock Chart">
+                        <p><a href="https://finance.yahoo.com/quote/${stock.symbol}" target="_blank">More Info</a></p>
+                    </div>
+                `;
+            } catch (error) {
+                console.error('Error fetching stock data:', error);
+                stockInfo.innerHTML = `<p>Error fetching stock data: ${error.message}</p>`;
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1><a href="home.html" style="color: inherit; text-decoration: none;">My Portfolio</a></h1>
+        <nav>
+            <ul>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="hobby.html">Hobby</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="search-section">
+            <h2>Search Stocks</h2>
+            <input type="text" id="searchInput" placeholder="Enter stock symbol...">
+            <button onclick="searchStock()">Search</button>
+            <div id="stockInfo"></div> <!-- New section to display stock information -->
+            <div class="tradingview-widget">
+                <!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <div class="tradingview-widget-copyright">
+                        <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+                            <span class="blue-text">Track all markets on TradingView</span>
+                        </a>
+                    </div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+                    {
+                        "symbols": [
+                            ["Apple", "AAPL|1D"],
+                            ["Google", "GOOGL|1D"],
+                            ["Microsoft", "MSFT|1D"],
+                            ["OANDA:XAUUSD|1D"],
+                            ["BITSTAMP:BTCUSD|1D"],
+                            ["NASDAQ:NVDA|1D"],
+                            ["CME_MINI:NQ1!|1D"],
+                            ["NASDAQ:TSLA|1D"]
+                        ],
+                        "chartOnly": false,
+                        "width": "100%",
+                        "height": "100%",
+                        "locale": "en",
+                        "colorTheme": "dark",
+                        "autosize": true,
+                        "showVolume": false,
+                        "showMA": false,
+                        "hideDateRanges": false,
+                        "hideMarketStatus": false,
+                        "hideSymbolLogo": false,
+                        "scalePosition": "right",
+                        "scaleMode": "Normal",
+                        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+                        "fontSize": "10",
+                        "noTimeScale": false,
+                        "valuesTracking": "1",
+                        "changeMode": "price-and-percent",
+                        "chartType": "area",
+                        "maLineColor": "#2962FF",
+                        "maLineWidth": 1,
+                        "maLength": 9,
+                        "headerFontSize": "medium",
+                        "lineWidth": 2,
+                        "lineType": 0,
+                        "dateRanges": [
+                            "1d|1",
+                            "1m|30",
+                            "3m|60",
+                            "12m|1D",
+                            "60m|1W",
+                            "all|1M"
+                        ]
+                    }
+                    </script>
+                </div>
+                <!-- TradingView Widget END -->
+            </div>
+        </div>
+        <!-- Adjusted position of the TradingView news widget -->
+        <div class="tradingview-news-widget">
+            <!-- TradingView Widget BEGIN -->
+            <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <div class="tradingview-widget-copyright">
+                    <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+                        <span class="blue-text">Track all markets on TradingView</span>
+                    </a>
+                </div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+                {
+                    "feedMode": "all_symbols",
+                    "isTransparent": false,
+                    "displayMode": "regular",
+                    "width": "100%",
+                    "height": "100%",
+                    "colorTheme": "dark",
+                    "locale": "en"
+                }
+                </script>
+            </div>
+            <!-- TradingView Widget END -->
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2023 My Portfolio</p>
+    </footer>
+</body>
+</html>
